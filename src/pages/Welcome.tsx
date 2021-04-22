@@ -1,22 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   SafeAreaView,
   Text,
   Image,
   TouchableOpacity,
   StyleSheet,
+  Dimensions,
 } from "react-native";
+
+import { Feather } from "@expo/vector-icons";
 
 import wateringImg from "../assets/watering.png";
 import colors from "../styles/colors";
 
 export function Welcome() {
-  const [visible, setVisible] = useState(false);
-
-  function handleVisibility() {
-    setVisible(true);
-  }
-
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.title}>
@@ -25,13 +22,25 @@ export function Welcome() {
         de forma fácil
       </Text>
 
-      {visible && <Image source={wateringImg} style={styles.image}></Image>}
+      <Image
+        source={wateringImg}
+        style={styles.image}
+        resizeMode="contain"
+      ></Image>
+
       <Text style={styles.subtitle}>
-        Não esqueça mais de regar suas plantas. Nós cuidamos de lebrar você
-        sempre que precisar
+        Não esqueça mais de regar suas plantas.
+        {"\n"}Nós cuidamos de lebrar você sempre que precisar.
       </Text>
+
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}> ^^ </Text>
+        <Text style={styles.buttonIcon}>
+          {" "}
+          <Feather
+            name="chevron-right"
+            style={styles.buttonIcon}
+          ></Feather>{" "}
+        </Text>
       </TouchableOpacity>
     </SafeAreaView>
   );
@@ -41,7 +50,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-around",
   },
   title: {
     fontSize: 32,
@@ -49,7 +58,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     color: colors.heading,
     marginBottom: 20,
-    marginTop: 10,
+    marginTop: 35,
   },
   subtitle: {
     textAlign: "center",
@@ -58,21 +67,22 @@ const styles = StyleSheet.create({
     marginTop: 30,
     color: colors.heading,
   },
+
+  image: {
+    height: Dimensions.get("window").width * 0.7,
+  },
   button: {
     backgroundColor: colors.green,
     justifyContent: "center",
     alignItems: "center",
     borderRadius: 16,
     marginBottom: 10,
-    marginTop: 50,
+    marginTop: 35,
     height: 56,
     width: 56,
   },
-  image: {
-    width: 240,
-    height: 240,
-  },
-  buttonText: {
+  buttonIcon: {
     color: colors.white,
+    fontSize: 24,
   },
 });
