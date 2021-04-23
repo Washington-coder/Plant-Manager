@@ -1,6 +1,7 @@
 import React from "react";
-import { Text, View } from "react-native";
-import { Welcome } from "./src/pages/Welcome";
+
+import AppLoading from "expo-app-loading";
+import { UserIdentification } from "./src/pages/UserIdentification";
 import {
   useFonts,
   Jost_400Regular,
@@ -13,13 +14,9 @@ export default function App() {
     Jost_600SemiBold,
   });
 
-  if (fontsLoaded) {
-    return (
-      <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-        <Text>Loading</Text>
-      </View>
-    );
+  if (!fontsLoaded) {
+    return <AppLoading />;
   }
 
-  return <Welcome />;
+  return <UserIdentification />;
 }
