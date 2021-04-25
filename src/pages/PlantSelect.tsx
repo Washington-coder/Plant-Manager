@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { EnviromentButton } from "../components/EnviromentButton";
 import { Header } from "../components/Header";
+import { useNavigation } from "@react-navigation/native";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 import api from "../services/api";
@@ -41,7 +42,7 @@ export function PlantSelect() {
 
   const [page, setPage] = useState(1);
   const [loadingMore, setLoadingMore] = useState(false);
-  const [loadedAll, setLoadedAll] = useState(false);
+  const navigation = useNavigation();
 
   function handleEnviromentSelected(enviroment: string) {
     setEnviromentSelected(enviroment);
@@ -86,6 +87,10 @@ export function PlantSelect() {
     fetchPlants();
   }
 
+  function handlePlantSelect(plant: PlantProps) {
+    navigation.navigate("PlantSave");
+  }
+
   useEffect(() => {
     async function fetchEnvironment() {
       const { data } = await api.get(
@@ -112,11 +117,12 @@ export function PlantSelect() {
       <View style={styles.header}>
         <Header />
         <Text style={styles.title}>Em qual ambiente</Text>
-        <Text style={styles.subtitle}>você quer colocar sua planta</Text>
+        <Text style={styles.subtitle}>você quer colocar sua planta?</Text>
       </View>
       <View>
         <FlatList
           data={enviroments}
+          keyExtractor={(item) => String(item.key)}
           renderItem={({ item }) => (
             <EnviromentButton
               title={item.title}
@@ -132,7 +138,13 @@ export function PlantSelect() {
       <View style={styles.plants}>
         <FlatList
           data={filteredPlants}
-          renderItem={({ item }) => <PlantCardPrimary data={item} />}
+          keyExtractor={(item) => String(item.id)}
+          renderItem={({ item }) => (
+            <PlantCardPrimary
+              data={item}
+              onPress={() => handlePlantSelect(item)}
+            />
+          )}
           showsVerticalScrollIndicator={false}
           numColumns={2}
           onEndReachedThreshold={0.1}

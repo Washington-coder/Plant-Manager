@@ -9,12 +9,14 @@ import {
   TouchableWithoutFeedback,
   Platform,
   Keyboard,
+  Alert,
 } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 
 import { Button } from "../components/Button";
-import { useNavigation } from "@react-navigation/native";
 
 export function UserIdentification() {
   const [isFocused, setIsFocused] = useState(false);
@@ -30,12 +32,17 @@ export function UserIdentification() {
   function handleInputFocus() {
     setIsFocused(true);
   }
+
   function handleInputChange(value: string) {
     setIsFilled(!!value);
     setName(value);
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
+    if (!name) return Alert.alert("Me diz como chamar você 😥");
+
+    await AsyncStorage.setItem("@plantmanager:user", name);
+
     navigation.navigate("Confirmation");
   }
 
