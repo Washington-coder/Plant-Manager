@@ -14,23 +14,11 @@ import fonts from "../styles/fonts";
 import api from "../services/api";
 import { PlantCardPrimary } from "../components/PlantCardPrimary";
 import { Load } from "../components/Load";
+import { PlantProps } from "../libs/storage";
 
 interface EnviromentProps {
   key: string;
   title: string;
-}
-
-interface PlantProps {
-  id: string;
-  name: string;
-  about: string;
-  water_tips: string;
-  photo: string;
-  environments: [string];
-  frequency: {
-    times: number;
-    repeat_every: string;
-  };
 }
 
 export function PlantSelect() {
@@ -88,7 +76,7 @@ export function PlantSelect() {
   }
 
   function handlePlantSelect(plant: PlantProps) {
-    navigation.navigate("PlantSave");
+    navigation.navigate("PlantSave", { plant });
   }
 
   useEffect(() => {
