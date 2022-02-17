@@ -27,27 +27,27 @@ Ou seja, o App ajuda o João a cuidar com carinho das platinhas que ele tem na s
 
 ## Features 
 
--   [ ] Salva a identificação do usuário no próprio dispositivo o usuário;
--   [ ] Consome de API os dados e características de cada planta;
--   [ ] Salva localmente a planta que o usuário possue;
--   [ ] Lembra o usuário quando regar e cuidar da plantinha de acordo com a frequência ideial das plantas que o usuário possui;
+-   [X] Salva a identificação do usuário no próprio dispositivo o usuário;
+-   [X] Consome de API os dados e características de cada planta;
+-   [X] Salva localmente a planta que o usuário possue;
+-   [X] Lembra o usuário quando regar e cuidar da plantinha de acordo com a frequência ideial das plantas que o usuário possui;
 
 
 ## ✨ Tecnologias
 
--   [ ] React Native
--   [ ] Typescript
--   [ ] Expo
--   [ ] Expo Local Notifications
--   [ ] Async Storage
--   [ ] Vector Icons
--   [ ] Axios
--   [ ] Date Fns
--   [ ] Lottie
--   [ ] Expo Google Fonts
--   [ ] React Navigation Stack e Bottom Tabs
--   [ ] React Native Gesture Handler
--   [ ] Json Server
+-   [X] React Native
+-   [X] Typescript
+-   [X] Expo
+-   [X] Expo Local Notifications
+-   [X] Async Storage
+-   [X] Vector Icons
+-   [X] Axios
+-   [X] Date Fns
+-   [X] Lottie
+-   [X] Expo Google Fonts
+-   [X] React Navigation Stack e Bottom Tabs
+-   [X] React Native Gesture Handler
+-   [X] Json Server
 
 
 ## 🔖 Layout
